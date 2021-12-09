@@ -44,12 +44,12 @@ def home():
 
 
         page_num = page_num.split(',')          # split method creates an array of single element containing empty string
-        # for i in range(len(page_num)):
-        #     if page_num[0] == '' or not page_num[i].isnumeric():
-        #         return render_template('index.html', warning = 'Please enter valid page no.')
+        for i in range(len(page_num)):
+            if page_num[0] == '' or not page_num[i].isnumeric():
+                return render_template('index.html', warning = 'Please enter valid page no.')
 
         page_arr = list(map(index_page, page_num))
-        print(page_arr)
+        # print(page_arr)
         degree = request.form.get('angle')
         insert_user_data(file_name, pdf)
         pdf_rotate(page_arr, int(degree))
